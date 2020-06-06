@@ -1,0 +1,41 @@
+<!-- <div *ngIf="lichChieu" class="container">
+  <div *ngFor="let lich of lichChieu | slice: 0:5" class="row">
+    <a routerLink="/checkout/{{ lich.maLichChieu }}">
+      {{ lich.ngayChieuGioChieu | date: "dd/MM/yyyy" }}
+    </a>
+  </div>
+</div> -->
+
+<div class="flex">
+  <div class="row">
+    <ul class="col-md-3">
+      <li
+        *ngFor="let heThongRap of cinemasService.heThongRap()"
+        (click)="chonHeThongRap(heThongRap.maHeThongRap)"
+      >
+        <img [src]="heThongRap.logo" width="50" height="50" />
+        {{ heThongRap.tenHeThongRap }}
+      </li>
+    </ul>
+
+    <div class="col-md-9">
+      <div>
+        <p (click)="chonNgayChieu('2019-01-01')">01</p>
+      </div>
+      <div *ngFor="let cumRap of cinemasService.cumRapTheoHeThong()">
+        {{ cumRap.tenCumRap }}
+        <ng-container *ngIf="lichChieuTheoNgay">
+          <p>test</p>
+          <div
+            *ngFor="
+              let lichchieu of lichChieuTheoNgay
+                | filter: cumRap:filterLichChieu()
+            "
+          >
+            {{ lichchieu.ngayChieuGioChieu | date: "hh:mm" }}
+          </div>
+        </ng-container>
+      </div>
+    </div>
+  </div>
+</div>

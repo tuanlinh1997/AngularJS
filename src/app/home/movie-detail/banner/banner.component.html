@@ -1,0 +1,18 @@
+<div *ngIf="chiTietPhim; else loading" class="container">
+  <div class="row">
+    <div class="col-md-6">
+      <img [src]="chiTietPhim.hinhAnh" />
+      <p>{{ chiTietPhim.tenPhim }}</p>
+      <p>{{ chiTietPhim.ngayKhoiChieu }}</p>
+    </div>
+    <div class="col-md-6">
+      <p>Đánh giá: {{ chiTietPhim.danhGia }}</p>
+    </div>
+  </div>
+</div>
+
+<ng-template #loading>
+  <!-- Tự viết thêm 1 component loading -->
+  <!-- <app-loading></app-loading> -->
+  ...loading
+</ng-template>
